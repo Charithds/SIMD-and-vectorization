@@ -10,7 +10,7 @@
 #include "util.h"
 
 #define XMM_ALIGNMENT_BYTES 32
-#define COLUMNS 50
+#define COLUMNS 10
 
 
 short mat_vec_ver = 0, mat_mat_ver = 0, c_ver = 0, sse_ver = 0, a_vec_ver = 0, test = 0, listing6;
