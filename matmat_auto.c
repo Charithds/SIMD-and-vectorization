@@ -79,4 +79,5 @@ int main(int argc, char *argv[]) {
     clock_t toc = clock();
     double el_t = elapsed_time(tic, toc);
     printf("Average time : %f\n", el_t);
+		
 }
