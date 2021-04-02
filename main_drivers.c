@@ -82,10 +82,10 @@ void driveMatVecCPU_listing6(int n) {
 }
 
 // listing 6 sse
-void matvec_unrolled_16sse(int n, float *vec_c, const float *mat_a, const float *vec_b) {
+void matvec_unrolled_4sse(int n, float *vec_c, const float *mat_a, const float *vec_b) {
     // NOTE : Matrix and Vector both must have dimensions which are multiples of 4
-    int unroll16Size = n / 16;  // expect an integer division
-    int unrolled_num = unroll16Size * 16;
+    int unroll16Size = n / 4;  // expect an integer division
+    int unrolled_num = unroll16Size * 4;
     int rest = n - unrolled_num;
 
     for (int i = 0; i < n; i+=1) {
@@ -123,7 +123,7 @@ void driveMatVecSSE(const float *mat, const float *vec_in, float *vec_out, int n
     for (int i = 0; i < REPEATED_TIMES; ++i) {
         memset(vec_out, 0, sizeof(float) * n);
         clock_t tic = clock();
-        matvec_unrolled_16sse(n, vec_out, mat, vec_in);
+        matvec_unrolled_4sse(n, vec_out, mat, vec_in);
         clock_t toc = clock();
         double el_t = elapsed_time(tic, toc);
         times[i] = el_t;
